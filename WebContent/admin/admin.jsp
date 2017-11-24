@@ -20,6 +20,8 @@
 	src="${pageContext.request.contextPath}/js/bootstrap-table-zh-CN.js"></script>
 </head>
 <body>
+<!--  当前页面标识-->
+  <input type="hidden" value="admin"/>
   <script type="text/javascript">
           
           if("${user.authRange}"!=1){

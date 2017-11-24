@@ -57,6 +57,21 @@
 <script type="text/javascript">
 
 	$(function() {
+		//alert(location.pathname);
+		console.log(location);
+		//console.log(location);
+		/* 判断用户是否登录当前页是否为后台页面 */
+		$(".pageTest").removeClass("btn btn-danger btn-lg");
+        if("${user.authRange}"==1){
+		if(location.pathname.indexOf("admin")>=0){
+			 $(".pageTest")[0].href+="getway/home.jsp";
+			 $(".pageTest").html("<h2>前台页面</h2>");
+		 }else{
+			 $(".pageTest")[0].href+="admin/admin.jsp";
+			 $(".pageTest").html("<h2>后台页面</h2>");
+		 }
+		$(".pageTest").addClass("btn btn-danger btn-lg");
+        }
 		/*当前时间 */
 			window.setInterval(function() {
 				$("#time").empty();
@@ -138,10 +153,7 @@
 		<button class="btn btn-info btn-large a">登录</button>
 		<button class="btn btn-info btn-large a">注册</button>
 	</c:if>
-	<c:if test="${user.authRange eq 1}">
-		<a href="${pageContext.request.contextPath}/getway/home.jsp"
-			class="btn btn-info btn-large"><h2>前台页面</h2></a>
-	</c:if>
+		<a href="${pageContext.request.contextPath}/" class="pageTest"></a>
 	<c:if test="${!empty user}">
 		<a href="#" class="btn btn-info btn-large"><h2>${user.userName}</h2></a>
 		<a href="javascript:void(0)" class="btn btn-info btn-large"><h2>注销</h2></a>
